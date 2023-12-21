@@ -564,13 +564,13 @@ const Index: NextPage = () => {
           origin={ctx.origin}
           chainId={_chainId}
           policies={[]}
-          onConnect={() =>
+          onConnect={() => {
             onConnect({
               context: ctx,
               policies: [],
               maxFee: "",
-            })
-          }
+            });
+          }}
           onCancel={() =>
             ctx.resolve({ code: ResponseCodes.CANCELED, message: "Canceled" })
           }

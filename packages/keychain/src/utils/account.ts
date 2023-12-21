@@ -349,6 +349,7 @@ class Account extends BaseAccount {
       return fees;
     }
 
+    console.log("!!! super.estimateInvokeFee");
     return super.estimateInvokeFee(calls, details);
   }
 
