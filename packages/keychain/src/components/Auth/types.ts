@@ -1,5 +1,5 @@
-import { Connect } from "pages";
 import { constants } from "starknet";
+import { Connect } from "types/keychain";
 import Controller from "utils/controller";
 
 export type FormValues = {
