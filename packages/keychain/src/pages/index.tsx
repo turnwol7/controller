@@ -9,7 +9,7 @@ import {
   Policy,
 } from "@cartridge/controller";
 import { Signature } from "starknet";
-import logout from "../methods/logout";
+import logout from "connector/logout";
 import { Status } from "utils/account";
 import {
   Connect,
