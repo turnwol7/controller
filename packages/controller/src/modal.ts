@@ -1,4 +1,4 @@
-export const createModal = (src: string, onClose?: () => void) => {
+export const createModal = (src: string) => {
   const iframe = document.createElement("iframe");
   iframe.src = src;
   iframe.id = "cartridge-modal";
@@ -34,15 +34,13 @@ export const createModal = (src: string, onClose?: () => void) => {
   };
 
   const close = () => {
-    if (onClose) {
-      onClose();
-    }
-
     container.style.visibility = "hidden";
     container.style.opacity = "0";
   };
 
-  container.onclick = () => close();
+  container.onclick = () => {
+    close();
+  };
 
   resize(iframe);
   window.addEventListener("resize", () => resize(iframe));

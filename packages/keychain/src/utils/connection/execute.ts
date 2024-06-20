@@ -24,7 +24,7 @@ export function executeFactory({
       sync?: boolean,
     ): Promise<ExecuteReply | ConnectError> => {
       if (sync) {
-        return await new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
           setContext({
             type: "execute",
             origin,

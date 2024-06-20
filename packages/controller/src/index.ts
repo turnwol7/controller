@@ -62,9 +62,7 @@ class Controller {
       return;
     }
 
-    this.modal = createModal(this.url.toString(), () => {
-      this.keychain?.reset();
-    });
+    this.modal = createModal(this.url.toString());
 
     if (
       document.readyState === "complete" ||
@@ -87,7 +85,14 @@ class Controller {
     });
 
     this.connection.promise
-      .then((keychain) => (this.keychain = keychain))
+      .then((keychain) => {
+        this.keychain = keychain;
+
+        this.modal!.element.onclick = async () => {
+          await this.keychain!.reset();
+          this.modal!.close();
+        };
+      })
       .then(() => this.probe());
   }
 
@@ -184,6 +189,7 @@ class Controller {
     } catch (e) {
       console.log(e);
     } finally {
+      this.keychain.reset();
       this.modal.close();
     }
   }

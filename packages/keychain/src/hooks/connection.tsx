@@ -30,6 +30,7 @@ type ConnectionContextValue = {
   setContext: (context: ConnectionCtx) => void;
   setController: (controller: Controller) => void;
   cancel: () => void;
+  close: () => void;
   logout: (context: ConnectionCtx) => void;
 };
 
@@ -49,18 +50,20 @@ export function ConnectionProvider({ children }: PropsWithChildren) {
   };
 
   const cancel = useCallback(async () => {
-    if (!parent) return;
+    console.log("!!!cancel", context)
+    context.resolve({
+      code: ResponseCodes.CANCELED,
+      message: "User closed modal",
+    });
+    // setContext(undefined);
+  }, [context]);
 
-    try {
-      context.resolve({
-        code: ResponseCodes.CANCELED,
-        message: "User closed modal",
-      });
-      await parent.close();
-    } catch (e) {
-      // Always fails for some reason
-    }
-  }, [context, parent]);
+  const close = useCallback(async () => {
+    cancel()
+
+    if (!parent) return;
+    await parent.close();
+  }, [parent, cancel])
 
   useEffect(() => {
     if (!isIframe()) {
@@ -80,7 +83,9 @@ export function ConnectionProvider({ children }: PropsWithChildren) {
       setPolicies,
       setContext,
       setController,
+      cancel,
     });
+    console.log("new connection")
     connection.promise.then((parent) =>
       setParent(parent as unknown as ParentMethods),
     );
@@ -88,7 +93,7 @@ export function ConnectionProvider({ children }: PropsWithChildren) {
     return () => {
       connection.destroy();
     };
-  }, []);
+  }, [cancel]);
 
   useEffect(() => {
     if (rpcUrl) {
@@ -123,6 +128,7 @@ export function ConnectionProvider({ children }: PropsWithChildren) {
         setController,
         setContext,
         cancel,
+        close,
         logout,
       }}
     >

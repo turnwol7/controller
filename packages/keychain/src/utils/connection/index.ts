@@ -13,6 +13,7 @@ import { revoke, session, sessions } from "./sessions";
 import { signMessageFactory } from "./sign";
 import { username } from "./username";
 import { ConnectionCtx } from "./types";
+import { resetFactory } from "./reset";
 
 export function connectToController({
   setOrigin,
@@ -20,12 +21,14 @@ export function connectToController({
   setPolicies,
   setContext,
   setController,
+  cancel,
 }: {
   setOrigin: (origin: string) => void;
   setRpcUrl: (url: string) => void;
   setPolicies: (policies: Policy[]) => void;
   setContext: (ctx: ConnectionCtx) => void;
   setController: (controller: Controller) => void;
+  cancel: () => Promise<void>;
 }) {
   return connectToParent({
     methods: {
@@ -42,7 +45,7 @@ export function connectToController({
       signMessage: normalize(validate(signMessageFactory(setContext))),
       session: normalize(session),
       sessions: normalize(sessions),
-      reset: normalize(() => () => setContext(undefined)),
+      reset: normalize(resetFactory(cancel)),
       username: normalize(username),
     },
   });

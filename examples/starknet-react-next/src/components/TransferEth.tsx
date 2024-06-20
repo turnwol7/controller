@@ -19,31 +19,36 @@ export const TransferEth = () => {
     }
     setSubmitted(true);
     setTxnHash(undefined);
-    const res = await account.execute(
-      [
+    try {
+      const res = await account.execute(
+        [
+          {
+            contractAddress: ETH_CONTRACT,
+            entrypoint: "approve",
+            calldata: [account?.address, "0x11C37937E08000", "0x0"],
+          },
+          {
+            contractAddress: ETH_CONTRACT,
+            entrypoint: "transfer",
+            calldata: [account?.address, "0x11C37937E08000", "0x0"],
+          },
+        ],
+        undefined,
         {
-          contractAddress: ETH_CONTRACT,
-          entrypoint: "approve",
-          calldata: [account?.address, "0x11C37937E08000", "0x0"],
-        },
-        {
-          contractAddress: ETH_CONTRACT,
-          entrypoint: "transfer",
-          calldata: [account?.address, "0x11C37937E08000", "0x0"],
-        },
-      ],
-      undefined,
-      {
-        chainId,
-      } as any,
-    );
+          chainId,
+        } as any,
+      );
+      console.log("!!!res", res)
+      setTxnHash(res.transaction_hash);
+      setSubmitted(false);
+      account
+        .waitForTransaction(res.transaction_hash)
+        .catch((err) => console.error(err))
+        .finally(() => console.log("done"));
+    } catch (e) {
+      console.log("error", e)
+    }
 
-    setTxnHash(res.transaction_hash);
-    setSubmitted(false);
-    account
-      .waitForTransaction(res.transaction_hash)
-      .catch((err) => console.error(err))
-      .finally(() => console.log("done"));
   }, [account, chainId]);
 
   if (!account) {
@@ -55,7 +60,7 @@ export const TransferEth = () => {
       <h2>Transfer Eth</h2>
       <p>Address: {ETH_CONTRACT}</p>
 
-      <button onClick={() => execute005()} disabled={submitted}>
+      <button onClick={execute005} disabled={submitted}>
         Transfer 0.005 ETH to self
       </button>
       {txnHash && (
