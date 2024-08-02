@@ -11,6 +11,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "default": "./dist/index.d.ts",
       "types": "./dist/index.d.ts"
     },
     "./themes/*": "./dist/themes/*.css"

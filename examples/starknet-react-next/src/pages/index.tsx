@@ -9,7 +9,7 @@ import { DelegateAccount } from "components/DelegateAccount";
 const Home: NextPage = () => {
   return (
     <div>
-      <h2>Wallet</h2>
+      <h2 className="text-3xl font-bold underline text-primary-foreground">Wallet</h2>
       <ConnectWallet />
       <DojoSpawnAndMove />
       <TransferEth />

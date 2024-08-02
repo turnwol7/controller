@@ -10,7 +10,9 @@
     },
   },
   "include": [
-    "src/components/**/*",
+    "src/components",
+    "src/index.ts",
+    "src/plugin.ts",
     "src/utils.ts",
   ]
 }
