@@ -6,7 +6,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/components/primitives/menubar";
+} from "./menubar";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Menubar> = {

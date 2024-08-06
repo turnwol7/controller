@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react";
-import { iconVariants } from "../utils";
+import { iconVariants } from "../../utils";
 import { IconProps } from "../types";
 
 export const OlmechIcon = memo(

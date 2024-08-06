@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react";
-import { duotoneIconVariants } from "../utils";
+import { duotoneIconVariants } from "../../utils";
 import { DuotoneIconProps } from "../types";
 
 export const FingerprintDuoIcon = memo(

@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react";
-import { iconVariants } from "../utils";
+import { iconVariants } from "../../utils";
 import { StateIconProps } from "../types";
 
 export const CoinsIcon = memo(

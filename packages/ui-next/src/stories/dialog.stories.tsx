@@ -9,7 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/primitives/alert-dialog";
+} from "./alert-dialog";
 import {
   Dialog as UIDialog,
   DialogContent,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/primitives/dialog";
+} from "./dialog";
 
 const meta: Meta<typeof Dialog> = {
   title: "Dialog",

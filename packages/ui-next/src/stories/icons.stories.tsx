@@ -13,7 +13,7 @@ import {
   StateIconProps,
 } from "@/components/icons/types";
 import { size, duotoneVariant } from "@/components/icons/utils";
-import { cn } from "@/utils";
+import { cn } from "../../utils";
 import { Meta, StoryObj } from "@storybook/react";
 import { ComponentType } from "react";
 

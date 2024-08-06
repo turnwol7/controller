@@ -1,4 +1,4 @@
-import { cn } from "@/utils";
+import { cn } from "../../utils";
 import { Meta, StoryObj } from "@storybook/react";
 import { PropsWithChildren } from "react";
 

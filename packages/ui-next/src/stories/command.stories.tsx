@@ -6,7 +6,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/primitives/command";
+} from "./command";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Command> = {

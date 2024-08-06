@@ -1,7 +1,7 @@
 import {
   ToggleGroup as UIToggleGroup,
   ToggleGroupItem,
-} from "@/components/primitives/toggle-group";
+} from "./toggle-group";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ToggleGroup> = {

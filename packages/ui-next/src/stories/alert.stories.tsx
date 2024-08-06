@@ -2,7 +2,7 @@ import {
   Alert as UIAlert,
   AlertDescription,
   AlertTitle,
-} from "@/components/primitives/alert";
+} from "./alert";
 
 import { Meta, StoryObj } from "@storybook/react";
 import { AlertCircle, Terminal } from "lucide-react";

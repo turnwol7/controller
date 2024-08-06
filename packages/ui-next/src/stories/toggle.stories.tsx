@@ -1,4 +1,4 @@
-import { Toggle as UIToggle } from "@/components/primitives/toggle";
+import { Toggle as UIToggle } from "./toggle";
 import { Meta, StoryObj } from "@storybook/react";
 import { Bold } from "lucide-react";
 

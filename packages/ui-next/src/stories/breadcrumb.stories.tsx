@@ -5,7 +5,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/primitives/breadcrumb";
+} from "./breadcrumb";
 import { Meta, StoryObj } from "@storybook/react";
 import { Slash } from "lucide-react";
 

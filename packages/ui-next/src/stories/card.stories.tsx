@@ -5,7 +5,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/primitives/card";
+} from "./card";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Card> = {
