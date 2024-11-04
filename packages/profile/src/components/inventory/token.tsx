@@ -159,6 +159,17 @@ function ERC20() {
           </CardContent>
         </Card>
       </LayoutContent>
+
+      <LayoutFooter>
+        <Button
+          className="w-full"
+          onClick={() => {
+            console.log("send");
+          }}
+        >
+          Send
+        </Button>
+      </LayoutFooter>
     </LayoutContainer>
   );
 }
