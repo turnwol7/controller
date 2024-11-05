@@ -4,7 +4,8 @@ import {
   Inventory,
   Collection,
   Asset,
-  Send,
+  SendCollection,
+  SendToken,
   Token,
 } from "@/components/inventory";
 import { Trophies } from "@/components/trophies";
@@ -37,6 +38,10 @@ export function App() {
         element={<Token />}
       />
       <Route
+        path="/account/:username/slot/:project/inventory/token/:address/send"
+        element={<SendToken />}
+      />
+      <Route
         path="/account/:username/slot/:project/trophies"
         element={<Trophies />}
       />
@@ -50,7 +55,7 @@ export function App() {
       />
       <Route path="/collection/:address" element={<Collection />} />
       <Route path="/collection/:address/:tokenId" element={<Asset />} />
-      <Route path="/collection/:address/send" element={<Send />} />
+      <Route path="/collection/:address/send" element={<SendCollection />} />
     </Routes>
   );
 }

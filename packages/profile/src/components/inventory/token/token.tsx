@@ -4,7 +4,7 @@ import {
   LayoutContent,
   LayoutFooter,
   LayoutHeader,
-} from "../layout";
+} from "@/components/layout";
 import {
   ArrowIcon,
   Button,
@@ -78,7 +78,7 @@ function Credits() {
       </LayoutContent>
 
       <LayoutFooter>
-        <Button onClick={() => parent.openPurchaseCredits().catch(() => {})}>
+        <Button onClick={() => parent.openPurchaseCredits().catch(() => { })}>
           Purchase
         </Button>
       </LayoutFooter>
@@ -87,8 +87,10 @@ function Credits() {
 }
 
 function ERC20() {
-  const { chainId } = useConnection();
   const { address } = useParams<{ address: string }>();
+  // const [searchParams, setSearchParams] = useSearchParams();
+
+  const { chainId } = useConnection();
   const location = useLocation();
   const t = useToken({ tokenAddress: address! });
   const { countervalue } = useCountervalue({
@@ -112,13 +114,12 @@ function ERC20() {
       }
     >
       <LayoutHeader
-        title={`${
-          t.balance === undefined ? (
-            <Skeleton className="h-[20px] w-[120px] rounded" />
-          ) : (
-            t.balance.formatted
-          )
-        } ${t.meta.symbol}`}
+        title={`${t.balance === undefined ? (
+          <Skeleton className="h-[20px] w-[120px] rounded" />
+        ) : (
+          t.balance.formatted
+        )
+          } ${t.meta.symbol}`}
         description={`${countervalue.formatted} ${CurrencyBase.Usd}`}
         icon={
           <img
@@ -161,14 +162,9 @@ function ERC20() {
       </LayoutContent>
 
       <LayoutFooter>
-        <Button
-          className="w-full"
-          onClick={() => {
-            console.log("send");
-          }}
-        >
-          Send
-        </Button>
+        <Link to="send">
+          <Button className="w-full">Send</Button>
+        </Link>
       </LayoutFooter>
     </LayoutContainer>
   );
